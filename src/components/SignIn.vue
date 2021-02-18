@@ -1,6 +1,12 @@
 <template>
     <!--sign in modal start-->
-    <div class="modal fade" id="signIn_modal" tabindex="-1" aria-labelledby="signIn_modalLabel" aria-hidden="true">
+    <div 
+          ref = "signin"
+          class="modal fade" 
+          id="signIn_modal" 
+          tabindex="-1" 
+          aria-labelledby="signIn_modalLabel" 
+          aria-hidden="true">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
@@ -10,17 +16,32 @@
                   <h2>Please sign in</h2>
               </div>
              <div class="modal-body">
-               <form>
+               <form v-on:submit="signin">
                 <div class="container">
                   <div class="row justify-content-center">
                     <div class="col-8">
                       <div class="input-group input-group-lg ">
-                        <input type="email" class="form-control" placeholder="Email address" aria-label="username" required>
+                        <input 
+                          v-model="email"
+                          type="email" 
+                          class="form-control" 
+                          placeholder="Email address" 
+                          aria-label="username" 
+                          required
+                          minlength="6"
+                          >
                       </div>
                     </div>
                     <div class="col-8">
                       <div class="input-group mb-3 input-group-lg">
-                        <input type="password" class="form-control" placeholder="Password" aria-label="password" required> 
+                        <input 
+                        v-model="password"
+                        type="password" 
+                        class="form-control" 
+                        placeholder="Password" 
+                        aria-label="password" 
+                        required
+                        minlength="6"> 
                       </div>
                     </div>
                   </div>
@@ -44,7 +65,28 @@
 <script >
 
 export default {
-    name:"SignIn"
+    name:"SignIn",
+    data(){
+      return {
+        email:'',
+        password:''
+      }
+    },
+    methods:{ 
+      signin(e){
+        e.preventDefault();
+        const signInObject = {
+          email:this.email,
+          password:this.password
+        }
+        this.$emit("signIn",signInObject);
+      }
+
+    },
+    mounted(){
+      this.$emit('init',this.$refs.signin);
+    }
+
 }
 </script>
 

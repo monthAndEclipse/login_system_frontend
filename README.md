@@ -23,3 +23,6 @@ npm run lint
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
+
+### Proxy
+since frontend and backend do not share the same ip:port , we add vue.config.js to redirect requests to our backend.

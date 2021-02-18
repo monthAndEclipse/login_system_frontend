@@ -9,8 +9,11 @@
   },
   "dependencies": {
     "@popperjs/core": "^2.6.0",
+    "axios": "^0.21.1",
     "bootstrap": "^5.0.0-beta1",
+    "cookie": "^0.4.1",
     "core-js": "^3.6.5",
+    "hash-object": "^0.1.7",
     "vue": "^3.0.0",
     "vue-router": "^4.0.0-0"
   },
